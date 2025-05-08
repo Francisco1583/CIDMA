@@ -1,0 +1,230 @@
+<?php
+ session_start();
+ if (!isset($_SESSION['user_id'])) {
+   header('Location: ../sign_in/sign_in.php');
+   exit;
+ }
+  include 'conection.php';
+                if (isset($_POST["machine_name"])) {
+                 $machine_name = htmlspecialchars($_POST["machine_name"]);
+		 mysqli_query($conn,"UPDATE MDP_Maquina SET nombre = '".$machine_name."'  WHERE id = '".$_GET["id"]."';");
+                 //echo "UPDATE MDP_Maquina SET nombre = '".$machine_name."'  WHERE id = '".$id."';";
+		}
+		if (isset($_POST["estado"])) {
+                 $machine_name = htmlspecialchars($_POST["estado"]);
+		 //$conn->begin_transaction();
+                  try {
+                    $conn->begin_transaction();
+                    mysqli_query($conn,"UPDATE MDP_Maquina SET id_estado = ".$_POST["estado"]."  WHERE id = '".$_GET["id"]."';");
+		    mysqli_query($conn,"INSERT INTO MDP_Maquina_uso_usuario (id_maquina, Matricula_usuario, estado_maquina) SELECT MDP_Maquina.id AS id_maquina, '".$_SESSION['user_id']."' AS Matricula_usuario, MDP_Maquina.id_estado AS estado_maquina FROM MDP_Maquina WHERE MDP_Maquina.id = '".$_GET["id"]."';");
+                    $conn->commit();
+                  }
+                  catch (Exception $e) {
+                        $conn->rollback();
+    			echo "Transacción fallida: " . $e->getMessage();
+		  }
+		 //echo "UPDATE MDP_Maquina SET id_estado = ".$_POST["estado"]."  WHERE id = '".$_GET["id"]."';";
+		 //echo $_POST["estado"];
+		 //echo 'estado, recibido';
+                }
+
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>maquinas</title>
+    <link rel="stylesheet" href="styless.css">
+     <script src="selectState.js"></script> 
+</head>
+<body>
+  <div id="mycontainer">
+
+    <div id="left_column">
+      <div id="userimg_config">
+        <img id="user_img" src="../logos/img_user.jpg" >
+      </div>
+
+      <div id="lateral_name">
+        <h4><?php echo $_SESSION['user_name']; ?></h4>
+      </div>
+
+      <div>
+        <table class= lateral_table>
+          <tr>
+            <td class="lateral_menu_icons_alineacion"><img class="lateral_menu_icons" src="../logos/machines.png"></img></td>
+            <td><a href="../opcion_maquinas/prueba.php"><h4>maquinas</h4></a></td>
+          </tr>
+        </table>
+      </div>
+
+      <div>
+        <table class= lateral_table>
+          <tr>
+            <td class="lateral_menu_icons_alineacion"><img class="lateral_menu_icons" src="../logos/reports.png"</img></td>
+            <td><h4>historial</h4></td>
+          </tr>
+        </table>
+      </div>
+
+      <div>
+        <table  class= lateral_table>
+          <tr>
+            <td class="lateral_menu_icons_alineacion"><img class="lateral_menu_icons" src="../logos/users.png"></img></td>
+            <td><a href="../opcion_usuarios/prueba.php"><h4>usuarios</h4></a></td>
+          </tr>
+        </table>
+      </div>
+
+      <div id="lateral_name">
+    <table  class= lateral_table id="logOutSpace">
+        <tr>
+            <td class="img_disps_align"><a href="../logout.php"><img class="lateral_menu_icons" src="../logos/log_out.png"></img></a></td>
+        </tr>
+    </table>
+      </div>
+    </div>
+
+  <div id="right_column">
+   <?php
+   include 'conection.php';
+                if (isset($_GET["id"])) {
+                 $id = htmlspecialchars($_GET['id']);
+		 $query = mysqli_query($conn,"SELECT * FROM MDP_maquina_detalles WHERE id = '".$id."';");
+		 $row = mysqli_fetch_assoc($query);
+                }
+
+                else {
+		 echo 'error en la petición'; 
+                }
+   ?>
+    <center>
+	<?php
+    	 echo '<form method="post" action="machines_details.php?id='.$id.'">'
+        ?>
+        <label for="buttomEditMaName"><img id="add_icon" src="https://cdn-icons-png.flaticon.com/512/45/45706.png" height="27px%";></label>
+        <input type="checkbox" id="buttomEditMaName">
+        <?php
+         echo '<input type="text" class="machine_name" name="machine_name" value="'.$row["nombre"].'">'
+        ?>
+   </form>
+   
+    <table>
+      <tbody>
+        <tr>
+          <th colspan="2"> 
+            <!-- if tipo_maquina == "impresora 3d" do show "img_maquina_impresora3d"
+                 else show "img_maquina_cortadora" -->
+            <img id="img_maquina_impresora3d"src="https://i.pinimg.com/originals/54/c6/0d/54c60d5ed07bb714199312d133216d50.png" width="55%">
+            <!-- <img id="img_maquina_cortadora"src="https://boyemx.com/wp-content/uploads/2018/06/cortelaser.png" width="70%"> -->
+          </th>
+        </tr>
+          <tr>
+              <td id="texto" style="text-align: right;">Estado de la máquina: </td>
+              <td id="texto">
+		<table>
+		<tr>
+                <td>
+                 <?php
+                   echo '<img src="../logos/estados/'.$row["id_estado"].'.png" width="40">'; 
+                 ?>
+                 </td>
+		<td>
+                  <?php
+                   echo '<form id="miFormulario" method="post" action="machines_details.php?id='.$id.'">'
+                  ?>
+		  <select onchange="enviarFormulario()" name="estado">
+                     <?php
+		      if($row["id_estado"] == 1) {
+			  echo '<option value="1">disponible</option>';
+                          echo '<option value="2">en uso</option>';
+                          echo '<option value="3">fuera de servicio</option>';
+		      }
+                      elseif($row["id_estado"] == 2) {
+		        echo '<option value="2">en uso</option>';
+                        echo '<option value="1">disponible</option>';
+                        echo '<option value="3">fuera de servicio</option>';
+                      }
+                      else {
+			echo '<option value="3">fuera de servicio</option>';
+			echo '<option value="2">en uso</option>';
+                        echo '<option value="1">disponible</option>';
+                      }
+
+                     ?>
+		  </select>
+                </form>
+
+
+		</td>
+		</tr>
+		</table>
+              </td>
+          </tr>
+          <tr>
+              <!-- Aqui tambien se ocurrio crear un boton para que te enseñe una ventana emergente con el historial especifico -->
+              <!-- <button type="button"> Mostrar Historial </button> -->
+              <td colspan="2" class="img_disps_align" >
+                <label for="display_hist" class="btn-buscar">Mostrar historial</label>
+                <input type="checkbox" id="display_hist">
+		  <div class="hist_div">
+                    <form method="post" action="prueba.php">
+    		      <div class="filter_option">
+      			Buscar por:
+      			<select name="parameter" class="filterInputSpace">
+       			 <option value="">Mostrar todo</option>
+       			 <option value="matricula">matrícula</option>
+       			 <option value="nombre">nombre</option>
+       			 <option value="Apellido_materno">apellido materno</option>
+       			 <option value="Apellido_paterno">apellido paterno</option>
+     			 </select>
+   		       </div>
+    		       <div class="filter_option">
+      		       <input type="text" placeholder="Buscar" name="str" class="filterInputSpace">
+    		       </div>
+                       <div class="filter_option">
+                       	  <input class="btn-buscar" type="submit" value="Buscar">
+    	               </div>
+   		    </form>
+
+		  
+                  <?php
+                   
+		   $query = mysqli_query($conn,"SELECT * FROM MDP_Maquina_uso_usuario_detail WHERE id_maquina = '".$_GET["id"]."' ORDER BY fecha DESC;");
+                   //echo "SELECT * FROM MDP_Maquina_uso_usuario_detail WHERE id_maquina = '".$_GET["id"]."';";
+                 if (mysqli_num_rows($query) > 0) {
+                   echo '<table id= "hist_table">';
+                     echo '<tr>'; 
+                     echo '<th>Matrícula</th>';
+                     echo '<th>nombre</th>';
+                     echo '<th>estado de la maquina</th>';
+		     echo '<th>fecha</th>';
+                     echo '</tr>';
+                     while ($row = mysqli_fetch_assoc($query)) {
+                       echo '<tr>';
+                       echo '<td>'.$row["matricula"].'</td>';
+                       echo '<td>'.$row["nombre"].'</td>';
+		       echo '<td>'.$row["estado"].'</td>';
+                       echo '<td>'.$row["fecha"].'</td>';
+                       echo '</tr>';
+                     }
+                   echo '</table>';
+                 }
+                   
+		else {
+                  echo 'SIN HISTORIAL PARA MOSTRAR';
+                }
+                  ?>
+                 </div>
+	      </td>
+          </tr>
+      </tbody>
+      
+    </table>
+    </center>
+  
+  
+
+ </div>
+
+</div>
+</body>

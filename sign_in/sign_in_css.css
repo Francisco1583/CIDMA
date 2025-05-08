@@ -1,0 +1,114 @@
+html,
+body {
+  
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(45deg, #5de0e6, #004aad);
+}
+
+
+#title {
+  height: 40%;
+  vertical-align: bottom;
+}
+
+#entrada {
+  border: none;
+  height: 90%;
+  width: 97%;
+  border-radius: 60px;
+  font-weight: bold;
+  font-size: 17px;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#entrada:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.4)
+}
+
+#iniciar_sesion {
+  background: #0f2f76;
+  border-radius: 60px;
+  height: 60px;
+  color: white;
+}
+
+#disponibilidad {
+  vertical-align: bottom;
+  color: white;
+}
+
+a {
+  color: white;
+}
+
+
+td {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  font-size: 80px;
+  color: white;
+
+}
+
+tr.espacios {
+  height: 10%;
+}
+
+td.td_input {
+  height: 60px;
+}
+
+
+table.container,
+tbody.container {
+  width: 100%;
+  height: 80%;
+  margin: 0;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+}
+
+table.datos,
+tbody.datos {
+  width: 350px;
+  height: 80%;
+  margin: 0;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.error_inicio {
+
+  color: black;
+}
+
+.error_inicio h4 {
+   font-weight: normal;
+}
+
+#ingresar {
+ cursor: pointer;
+ width: 100%;
+ height: 100%;
+ background: #0f2f76;
+ border-radius: 60px;
+ color: white;
+ font-size: 20px;
+}
+
+h4 {
+    color: white;
+}

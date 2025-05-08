@@ -1,0 +1,102 @@
+html,
+body {
+  font-family: 'Open Sans', sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+table,
+tbody {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+}
+
+a {
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+
+table.cuadro_disp {
+  background: #c5f0ff;
+  border-radius: 10%;
+  height: 98%;
+  width: 98%;
+}
+
+.blue {
+  background: linear-gradient(90deg, #5de0e6, #004aad);
+  width: 180px;
+}
+
+.white {
+  /*background-color: rgba(255, 255, 255, 1);*/
+  background: #a2d3e4;
+}
+
+td.azul {
+  text-align: center;
+  vertical-align: top;
+}
+
+td.disps_size {
+  height: 20%;
+  width: 20%;
+}
+
+img.led {
+  width: 8%;
+  border-radius: 50%;
+  border: 2px solid #000000;
+}
+
+img.img_disps {
+  width: 50%;
+}
+
+#azul_img_user {
+  height: 10%;
+}
+
+#user_img {
+  width: 100px;
+  border-radius: 50%;
+}
+
+#cuadro_add {
+  background: #c5f0ff;
+  text-align: center;
+  border-radius: 10%;
+  height: 98%;
+  width: 98%;
+}
+
+#buscar {
+  height: 5%;
+}
+
+#add {
+      width: 5%;
+}
+
+
+
+td.title_disp {
+  height: 10%;
+  text-align: center;
+}
+
+th.titulos_historial {
+  background: #c5f0ff;
+}
+
+img.image_bottom {
+    width: 40%;
+}
+
+td.img_space {
+  width: 7%;
+}

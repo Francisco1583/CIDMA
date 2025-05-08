@@ -1,0 +1,328 @@
+
+html,body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1 {
+    font-size: 3vw;
+}
+
+h4 {
+  color: white;
+}
+
+h3 {
+ color: red;
+}
+
+#hola {
+  display: none;
+}
+
+
+
+#title {
+  width: 100%;
+  text-align: center;
+
+}
+
+#mycontainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow:auto;
+  border-collapse: collapse;
+}
+
+#mycontainer div {
+  float: left;
+}
+
+#left_column {
+  background: rgb(7, 63, 148);
+  flex: 0 0 190px;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+#left_column div {
+  float: none;
+}
+
+#right_column {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  flex: 0.95;
+  margin-left: 10%;
+  height: 100%;
+}
+
+
+
+#machines_div {
+  height: 90%;
+  width: 100%;
+}
+
+#machines_div div {
+  float: none;
+}
+
+
+
+#lateral_name {
+  text-align: center;
+  height: 20%;
+}
+
+#add_icon {
+  height: 27px;
+}
+
+#users {
+  width: 90%;
+}
+
+
+
+
+div.filter_option  {
+  margin: 10px;
+  position: relative;
+  bottom: 0.7% ;
+}
+
+
+
+
+
+img.img_disps {
+    width: 120px;
+}
+
+td.img_disps_align {
+  text-align: center;
+}
+
+#userimg_config {
+  text-align: center;
+}
+
+#user_img {
+  width: 140px;
+  border-radius: 50%;
+}
+
+td.lateral_menu_icons_alineacion {
+  text-align: right;
+  width: 40%;
+}
+
+img.lateral_menu_icons {
+  width: 40px;
+}
+
+table.lateral_table {
+  width: 100%;
+}
+
+.btn {
+ font-weight: bold;
+ font-size: 12px;
+ padding: 4px;
+ color: black;
+ border: none;
+ border-radius: 5px;
+ box-shadow: 5px 5px 5px gray;
+}
+
+.btn-red {
+ background: linear-gradient(180deg, #e42f2f, #ad0000);
+ text-decoration-line: none;
+}
+
+.btn-green {
+ background: linear-gradient(180deg, #62dd3d, #486d3d);
+ text-decoration-line: none;
+}
+
+.btn-green:hover {
+ background: linear-gradient(180deg, #3bff00, #486d3d);
+ text-decoration-line: none;
+}
+
+.btn-gray {
+ background: white;
+ border: 1px solid gray;
+ text-decoration-line: none;
+
+}
+
+.btn-gray:hover {
+ background: #cfcfcf;
+
+}
+
+.btn-buscar {
+    /* font-size: 0.7vw; */
+    padding: 0.5em 1em;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.modal{
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.modal1{
+  display: flex;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+
+#btn-modal {
+ display: none;
+}
+
+#btn-modal:checked ~ .modal {
+  display: flex;
+}
+
+#btn-modal-up {
+ display: none;
+}
+
+#btn-modal-up:checked ~ .modal {
+  display: flex;
+}
+
+
+#container {
+  margin: 0;
+  text-align: center;
+  padding: 30px 50px;
+  background-color: #FFF;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#container div {
+  float: none;
+  margin: 10px;
+}
+
+#container-up {
+  margin: 0;
+  text-align: center;
+  padding: 30px 50px;
+  background-color: #FFF;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#container-up div {
+  float: none;
+  margin: 10px;
+}
+
+
+label{
+	cursor: pointer;
+}
+
+
+
+#cuadro_add {
+  background: #c5f0ff;
+  text-align: center;
+  border-radius: 10%;
+  height: 98%;
+  width: 98%;
+}
+
+#buscar {
+  height: 5%;
+}
+
+#add {
+      width: 5%;
+}
+
+
+
+
+td.title_disp {
+  height: 10%;
+  text-align: center;
+}
+
+th.titulos_historial {
+  background: #c5f0ff;
+}
+
+img.image_bottom {
+    width: 40%;
+}
+
+td.img_space {
+  width: 7%;
+}
+
+#add_div {
+ align-items: center;
+ text-align:center;
+}
+
+#logOutSpace {
+ height: 100%;
+}
+
+
+
+#hist_table {
+    border-radius: 15px;
+    width: 100%;
+}
+
+#hist_table th, #hist_table td {
+    padding: 7px;
+    border-radius: 5px;
+    font-size: 1.3vw;
+}
+
+#hist_table th {
+ background: #a2d3e4;
+} 
+
+#hist_table td {
+ background: #f6f6f9;
+}

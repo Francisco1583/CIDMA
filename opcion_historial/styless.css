@@ -1,0 +1,152 @@
+html,body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  
+  width: 100%;
+  
+}
+
+h1 {
+    font-size: 3vw;
+}
+
+h4 {
+  color: white;
+}
+
+#mycontainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow:auto;
+  border-collapse: collapse;
+
+}
+
+#container div {
+  float: left;
+}
+
+#left_column {
+  background: rgb(7, 63, 148);
+  flex: 0 0 190px;
+  height: 100%;
+ overflow-y: scroll;
+}
+
+#left_column div {
+  float: none;
+}
+
+#right_column {
+
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  flex: 0.95;
+  margin-left: 10%;
+  height: 100%;
+}
+
+#logOutSpace {
+ height: 100%;
+}
+
+#lateral_name {
+  text-align: center;
+  height: 20%;
+}
+
+#userimg_config {
+  text-align: center;
+}
+
+#user_img {
+  width: 140px;
+  border-radius: 50%;
+}
+
+#hist_table {
+  border-radius: 15px;
+  width: 100%;
+}
+
+#hist_table th, #hist_table td {
+  padding: 7px;
+  border-radius: 5px;
+  font-size: 1.3vw;
+}
+
+#hist_table th {
+background: #a2d3e4;
+}
+
+#hist_table td {
+background: #f6f6f9;
+}
+
+#boton {
+  box-shadow: 5px 5px 5px gray;
+    /* font-size: 0.7vw; */
+    padding: 0.5em 1em;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#menu {
+  font-size: 1.1vw;
+}
+
+#buscar_input {
+  font-size: 1.1vw;
+}
+
+img.img_disps {
+    width: 110px;
+}
+
+.img_disps_align {
+  text-align: center;
+  vertical-align: middle;
+}
+
+td.lateral_menu_icons_alineacion {
+  text-align: right;
+  width: 40%;
+}
+
+img.lateral_menu_icons {
+  width: 40px;
+}
+
+table.lateral_table {
+  width: 100%;
+}
+
+div.filter_option  {
+    margin: 10px;
+    position: relative;
+    bottom: 0.7% ;
+  }
+
+.tabla-colorida {
+    font-family: 'Open Sans', sans-serif;
+    border-spacing: 0; /* Elimina el espacio entre las celdas */
+    border-radius: 15px; /* Bordes redondeados para la tabla */
+    /*border: 2px solid #000; /* Borde general de la tabla */
+    background: #a2d3e4; /*#8EB8C6 #c5f0ff*/
+    border-radius: 15px;
+    width: 90%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.tabla-colorida th, .tabla-colorida td {
+    border: 3px solid #a2d3e4;
+    padding: 7px;
+    border-radius: 5px;
+    font-size: 1.3vw;
+}

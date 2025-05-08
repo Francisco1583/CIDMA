@@ -1,0 +1,31 @@
+<?php
+  session_start();
+
+ if(isset($_GET["update_confirm"]) AND $_GET["update_confirm"] == "true") {
+   $_SESSION["gbl_update"] = "True";
+   $_SESSION["global_update_id"] = $_GET["id"];
+   header("Location: prueba.php");
+   exit;
+   
+  }
+
+  elseif(isset($_GET["update_confirm"]) AND $_GET["update_confirm"] == "false") {
+   $_SESSION["gbl_update"] = "False";
+   header("Location: prueba.php");
+   exit;
+   
+  }
+  
+  if(isset($_POST["update_send"]) AND $_POST["update_send"] == "true") {
+   
+   $_SESSION["gbl_update"] = "False";
+   header("Location: prueba.php");
+   exit;
+   
+  }
+
+
+
+
+
+?>
